@@ -3,6 +3,7 @@
   width: 100%;
   border-top: 2px solid;
   animation-name: change-border-color;
+  animation-direction: alternate;
   animation-iteration-count: infinite;
   animation-duration: 5s;
   animation-timing-function: ease;
@@ -10,11 +11,10 @@
   bottom:0;
 }
 
-
 @keyframes change-border-color {
-  0% { color: #134e4a; }
-  25% { color: #0f766e; }
-  50% { color: #14b8a6; }
-  75% { color: #5eead4; }
-  100% { color: #f0fdfa; }
+  0% { color: #172554; }
+  25% { color: #1e3a8a; }
+  50% { color: #1e40af; }
+  75% { color: #1d4ed8; }
+  100% { color: #2563eb; }
 }

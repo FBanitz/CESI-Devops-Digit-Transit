@@ -1,4 +1,23 @@
 .takeTest {
-  width: 10em;
+  width: 20em;
   height: 10em;
+  border: 2px solid;
+  animation-name: change-border-color;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-duration: 5s;
+  width: 20em;
+  animation-timing-function: ease;
+}
+
+.takeTest:hover {
+  border-color: green;
+}
+
+@keyframes change-border-color {
+  0% { border-color: #172554; }
+  25% { border-color: #1e3a8a; }
+  50% { border-color: #1e40af; }
+  75% { border-color: #1d4ed8; }
+  100% { border-color: #2563eb; }
 }
