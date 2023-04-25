@@ -1,0 +1,18 @@
+.banner {
+  height: 5em;
+  width: 100%;
+  border-bottom: 2px solid;
+  animation-name: change-border-color;
+  animation-iteration-count: infinite;
+  animation-duration: 5s;
+  animation-timing-function: ease;
+}
+
+
+@keyframes change-border-color {
+  0% { color: #134e4a; }
+  25% { color: #0f766e; }
+  50% { color: #14b8a6; }
+  75% { color: #5eead4; }
+  100% { color: #f0fdfa; }
+}
