@@ -1,0 +1,11 @@
+.banner {
+  background-color: #85CB33;
+  height: 5em;
+  width: 100%;
+}
+
+body {
+  background-color: #EFFFC8;
+  margin: 0px;
+  padding: 0px;
+}
