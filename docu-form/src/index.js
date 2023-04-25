@@ -14,7 +14,7 @@ root.render(
     <Router>
       <Routes>
         {/* <Route path="/" element={<Home />}></Route> */}
-        <Route path="/Competences" element={<Competences />}></Route>
+        <Route path="/competences" element={<Competences />}></Route>
         <Route path="/reactivite" element={<Reactivite />}></Route>
         <Route path="/numerique" element={<Numerique />}></Route>
         {/* <Route path="/synthese" element={<Synthese />}></Route> */}
