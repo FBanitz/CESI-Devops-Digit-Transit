@@ -1,9 +1,5 @@
 import { Link } from 'react-router-dom';
 
-import Competences from './Competences'
-import Reactivite from './Reactivite'
-import Numerique from './Numerique'
-
 function Synthese() {
     return (
         <div>
@@ -11,9 +7,10 @@ function Synthese() {
 
             <h2>Entreprise : Groupe Roederer</h2>
 
-            <p><Link to="/Reactivite">Axe Réactivité</Link> : 3.5/5</p>
-            <p><Link to="/Competences">Axe Compétences</Link> : 4.0/5</p>
-            <p><Link to="/Numerique">Axe Numérique</Link> : 3.8/5</p>
+            <p><Link to="/reactivite">Axe Réactivité</Link> : 3.5/5</p>
+            <p><Link to="/competences">Axe Compétences</Link> : 4.0/5</p>
+            <p><Link to="/numerique">Axe Numérique</Link> : 3.8/5</p>
+
         </div>
     );
 }
