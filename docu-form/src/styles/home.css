@@ -15,9 +15,9 @@
 }
 
 @keyframes change-border-color {
-  0% { border-color: #172554; }
-  25% { border-color: #1e3a8a; }
-  50% { border-color: #1e40af; }
-  75% { border-color: #1d4ed8; }
-  100% { border-color: #2563eb; }
+  0% { color: #172554; }
+  25% { color: #1e3a8a; }
+  50% { color: #1e40af; }
+  75% { color: #1d4ed8; }
+  100% { color: #2563eb; }
 }
