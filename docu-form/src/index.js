@@ -20,8 +20,8 @@ root.render(
         <Route path="/reactivite" element={<Reactivite />}></Route>
         <Route path="/numerique" element={<Numerique />}></Route>
         {/* <Route path="/synthese" element={<Synthese />}></Route> */}
-        <Route path="/" element={<Synthese />}></Route>
-        <Route path="/home" element={<Home />}></Route>
+        <Route path="/synthese" element={<Synthese />}></Route>
+        <Route path="/" element={<Home />}></Route>
       </Routes>
     </Router>
   </React.StrictMode>
