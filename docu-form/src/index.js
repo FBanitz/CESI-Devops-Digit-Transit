@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import "./styles/index.css"
 
 import Home from './pages/Home'
+import Questions from './pages/Questions'
+
 import Competences from './components/Competences'
 import Reactivite from './components/Reactivite'
 import Numerique from './components/Numerique'
@@ -22,6 +24,7 @@ root.render(
         {/* <Route path="/synthese" element={<Synthese />}></Route> */}
         <Route path="/synthese" element={<Synthese />}></Route>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/questions" element={<Questions />}></Route>
       </Routes>
     </Router>
   </React.StrictMode>
