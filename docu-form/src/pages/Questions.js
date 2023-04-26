@@ -11,7 +11,7 @@ function Questions(){
     return (
         <div className="flex flex-col">
           <Banner />
-          <div className="flex flex-col justify-center items-center h-screen text-center">
+          <div className="flex flex-col justify-center items-center h-screen text-center text-zinc-50">
                   <QuestionArea/>
                   <AnswerArea/>
           </div>
