@@ -6,7 +6,6 @@
   animation-direction: alternate;
   animation-iteration-count: infinite;
   animation-duration: 5s;
-  width: 20em;
   animation-timing-function: ease;
 }
 
