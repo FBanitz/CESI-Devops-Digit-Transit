@@ -1,9 +1,12 @@
+import { useEffect } from "react"
 import { Link } from 'react-router-dom';
 import Banner from "../components/Banner.js"
 import Footer from "../components/Footer.js"
 import "../styles/home.css"
 
 function Home(){
+  useEffect(() => {document.title = "Accueil - DIAGNOST'IT"});
+
     return (
         <div className="flex flex-col">
           <Banner />
