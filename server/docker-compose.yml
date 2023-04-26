@@ -1,0 +1,24 @@
+version: '3'
+services:
+  directus:
+    container_name: backend
+    image: directus/directus:latest
+    ports:
+      - 8055:8055
+    volumes:
+      - ./uploads:/directus/uploads
+      - ./extensions:/directus/extensions
+      # - ./database:/directus/database ## not used as we connect to distant database
+    environment:
+      KEY: '255d861b-5ea1-5996-9aa3-922530ec40b1'
+      SECRET: '6116487b-cda1-52c2-b5b5-c8022c45e263'
+
+      DB_CLIENT: 'mysql'
+      DB_HOST: '172.16.47.242'
+      DB_PORT: '3306'
+      DB_DATABASE: 'data'
+      DB_USER: 'user'
+      DB_PASSWORD: 'user'
+
+      ADMIN_EMAIL: 'admin@email.com'
+      ADMIN_PASSWORD: 'd1r3ctu5M3g4s3cUr3'
