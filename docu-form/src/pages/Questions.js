@@ -9,7 +9,7 @@ function Questions(){
     return (
         <div className="flex flex-col">
           <Banner />
-          <div className="flex flex-col justify-center items-center h-screen">
+          <div className="flex flex-col justify-center items-center h-screen text-center">
                   <QuestionArea/>
                   <AnswerArea/>
           </div>
