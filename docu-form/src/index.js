@@ -9,8 +9,22 @@ import Home from './pages/Home'
 import QuestionList from './pages/QuestionList'
 import Synthese from './components/Synthese'
 import QuestionForm from './pages/QuestionForm';
+import app_version from './version';
+import { pingserver } from './api';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+console.log("Webserver version " + app_version)
+
+pingserver().then((res) => {
+  console.log("Backend pinged")
+  if (res.status === 200) {
+    console.log("Pong! 🏓")
+  } else {
+    console.log("Ping failed")
+  }
+})
+
 root.render(
   <React.StrictMode>
     <Router>

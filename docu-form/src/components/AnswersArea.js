@@ -11,7 +11,7 @@ class AnswersArea extends React.Component {
       <div className="flex flex-col mt-6">
         <div className="flex flex-row space-x-4">
           {responseOptions.map((responseOption) => (
-            <AnswerArea responseOption={responseOption} onQuestionAnswered={onQuestionAnswered} />
+            <AnswerArea key={responseOption.id} responseOption={responseOption} onQuestionAnswered={onQuestionAnswered} />
           ))}
         </div>
 

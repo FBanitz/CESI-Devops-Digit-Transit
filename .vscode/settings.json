@@ -1,0 +1,18 @@
+{
+    "actionButtons": {
+        "commands": [
+            {
+                "cwd": "${workspaceFolder}/server", 	// Terminal initial folder ${workspaceFolder} and os user home as defaults
+                "name": "▶ Start local docker stack",
+                "singleInstance": true,
+                "command": "docker compose up -d\nexit", // This is executed in the terminal.
+            },
+            {
+                "cwd": "${workspaceFolder}/docu-form", 	// Terminal initial folder ${workspaceFolder} and os user home as defaults
+                "name": "▶ Start local webserver",
+                "singleInstance": true,
+                "command": "npm start", // This is executed in the terminal.
+            },
+        ]
+    }
+}
