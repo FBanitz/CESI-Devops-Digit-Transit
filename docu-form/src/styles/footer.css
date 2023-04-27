@@ -7,14 +7,28 @@
   animation-iteration-count: infinite;
   animation-duration: 5s;
   animation-timing-function: ease;
-  position:fixed;
-  bottom:0;
+  position: fixed;
+  bottom: 0;
 }
 
 @keyframes change-border-color {
-  0% { color: #172554; }
-  25% { color: #1e3a8a; }
-  50% { color: #1e40af; }
-  75% { color: #1d4ed8; }
-  100% { color: #2563eb; }
+  0% {
+    color: #172554;
+  }
+
+  25% {
+    color: #1e3a8a;
+  }
+
+  50% {
+    color: #1e40af;
+  }
+
+  75% {
+    color: #1d4ed8;
+  }
+
+  100% {
+    color: #2563eb;
+  }
 }
