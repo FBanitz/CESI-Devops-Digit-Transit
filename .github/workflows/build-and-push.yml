@@ -1,6 +1,5 @@
 name: Build and Push Docker Image
 on:
-  workflow_dispatch:
   release:
     types: [published] 
 
@@ -8,6 +7,7 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest   
     steps:
+
       - name: Checkout Code
         uses: actions/checkout@v2
 
@@ -16,10 +16,17 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          
+
       - name: Get release tag
         run: |
           echo Release tag found : ${{ github.event.release.tag_name }}
+          
+      - name: Modify version.js
+        uses: jaywcjlove/github-action-modify-file-content@main
+        with:
+          path: docu-form/src/version.js
+          body: "const app_version = '${{ github.event.release.tag_name }}'; export default app_version;"
+          overwrite: 'true'
 
       - name: Build Docker Image
         working-directory: docu-form
