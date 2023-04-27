@@ -19,13 +19,12 @@ jobs:
           
       - name: Get release tag
         run: |
-          echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-          echo Release tag found : $RELEASE_VERSION
+          echo Release tag found : ${{ github.event.release.tag_name }}
 
       - name: Build Docker Image
         working-directory: docu-form
-        run: docker build . -t gobetti/cesilab:${{ env.RELEASE_VERSION }}
+        run: docker build . -t gobetti/cesilab:${{ github.event.release.tag_name }}
 
       - name: Push Docker Image
         working-directory: docu-form
-        run: docker push gobetti/cesilab:${{ env.RELEASE_VERSION }}
+        run: docker push gobetti/cesilab:${{ github.event.release.tag_name }}
