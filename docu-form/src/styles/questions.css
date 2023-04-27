@@ -1,29 +1,53 @@
 .questionArea {
   width: 50%;
   height: 10em;
+  padding: 1em;
   border: 2px solid;
   animation-name: change-border-color;
   animation-direction: alternate;
   animation-iteration-count: infinite;
   animation-duration: 5s;
   animation-timing-function: ease;
+  display: flex;
+  justify-content: center;
 }
 
 .answerArea {
-  width: 10em;
-  height: 5em;
+  width: 15em;
+  height: 10em;
+  padding: 1em;
   border: 2px solid;
   animation-name: change-border-color;
   animation-direction: alternate;
   animation-iteration-count: infinite;
   animation-duration: 5s;
   animation-timing-function: ease;
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  margin: 1em;
 }
 
 @keyframes change-border-color {
-  0% { border-color: #172554; }
-  25% { border-color: #1e3a8a; }
-  50% { border-color: #1e40af; }
-  75% { border-color: #1d4ed8; }
-  100% { border-color: #2563eb; }
+  0% {
+    border-color: #172554;
+  }
+
+  25% {
+    border-color: #1e3a8a;
+  }
+
+  50% {
+    border-color: #1e40af;
+  }
+
+  75% {
+    border-color: #1d4ed8;
+  }
+
+  100% {
+    border-color: #2563eb;
+  }
 }
