@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import "./styles/index.css"
 
 import Home from './pages/Home'
-import Company from './pages/Company'
 
 import QuestionList from './pages/QuestionList'
 import Synthese from './components/Synthese'
@@ -24,7 +23,6 @@ root.render(
         <Route path="/synthese" element={<Synthese />}></Route>
         <Route path="/" element={<Home />}></Route>
         <Route path="/questions" element={<QuestionForm />}></Route>
-        <Route path="/company" element={<Company />}></Route>
       </Routes>
     </Router>
   </React.StrictMode>

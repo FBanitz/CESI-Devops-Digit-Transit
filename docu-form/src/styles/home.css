@@ -34,3 +34,25 @@
     border-color: #2563eb;
   }
 }
+
+.companyInput {
+  border: 2px solid;
+  animation-name: change-border-color;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-duration: 5s;
+  animation-timing-function: ease;
+}
+
+@keyframes change-border-color {
+  0% { border-color: #172554; }
+  25% { border-color: #1e3a8a; }
+  50% { border-color: #1e40af; }
+  75% { border-color: #1d4ed8; }
+  100% { border-color: #2563eb; }
+}
+
+.companyInput:focus {
+    outline: none !important;
+    border:2px solid green !important;
+  }

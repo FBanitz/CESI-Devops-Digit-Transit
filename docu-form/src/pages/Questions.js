@@ -1,19 +1,19 @@
 import { useEffect } from "react"
 import Banner from "../components/Banner.js"
 import Footer from "../components/Footer.js"
-import CompanyForm from "../components/CompanyForm?"
+import QuestionArea from "../components/QuestionArea"
+import AnswerArea from "../components/AnswerArea"
 
 import "../styles/questions.css"
 
-function Company(){
-  useEffect(() => {document.title = "Company - DIAGNOST'IT"});
+function Questions(){
+  useEffect(() => {document.title = "Questions - DIAGNOST'IT"});
     return (
         <div className="flex flex-col">
           <Banner />
-
           <div className="flex flex-col justify-center items-center h-screen text-center text-zinc-50">
-            <h1 className="text-4xl">Entrer le nom de votre entreprise</h1>
-            <CompanyForm />
+                  <QuestionArea/>
+                  <AnswerArea/>
           </div>
 
           <Footer />
@@ -21,4 +21,4 @@ function Company(){
     );
 }
 
-export default Company
+export default Questions
