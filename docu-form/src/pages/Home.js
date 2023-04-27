@@ -91,6 +91,8 @@ function Home() {
       console.log("Diagnostic does not exist")
       console.log("Creating diagnostic")
       await createDiagnostic(company.id)
+      
+      return navigate("/questions")
     }
 
     console.log("Company does not exist")
