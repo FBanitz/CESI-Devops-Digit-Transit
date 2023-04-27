@@ -1,21 +1,23 @@
 import "../styles/questions.css";
 
-function AnswerArea() {
+import React from "react"
 
+class AnswerArea extends React.Component {
+
+  onClick() {
+    this.props.onQuestionAnswered(this.props.responseOption.id);
+  }
+
+  render() {
+    const responseOption = this.props.responseOption;
     return (
-      <div className="flex flex-col mt-6">
-        <div className="flex flex-row space-x-4">
-          <div className="answerArea bg-zinc-950 rounded-2xl"></div>
-          <div className="answerArea bg-zinc-950 rounded-2xl"></div>
-          <div className="answerArea bg-zinc-950 rounded-2xl"></div>
+      <a href={"#response_option_" + responseOption.id} onClick={() => this.onClick()}>
+        <div className="answerArea bg-zinc-950 rounded-2xl items-center">
+          <p className="text-zinc-50">{responseOption.response}</p>
         </div>
-          <div className="flex flex-row justify-center items-center mt-6">
-          <div className="answerArea bg-zinc-950 rounded-2xl items-center justify-center"><p>Revenir à la question précédente</p></div>
-        </div>
-      </div>
+      </a>
     );
+  }
 }
-
-
 
 export default AnswerArea;
