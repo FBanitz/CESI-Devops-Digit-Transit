@@ -19,8 +19,8 @@ jobs:
 
       - name: Build Docker Image
         working-directory: docu-form
-        run: docker build . -t gobetti/cesilab:${{ github.ref_name }}
+        run: docker build . -t gobetti/cesilab:${{ env.RELEASE_VERSION }}
 
       - name: Push Docker Image
         working-directory: docu-form
-        run: docker push gobetti/cesilab:${{ github.ref_name }}
+        run: docker push gobetti/cesilab:${{ env.RELEASE_VERSION }}
