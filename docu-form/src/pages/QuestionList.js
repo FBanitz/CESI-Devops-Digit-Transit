@@ -1,6 +1,8 @@
 import React from 'react';
 
 import "../styles/rapport.css"
+import apiEndpoint from '../api';
+
 
 class QuestionList extends React.Component {
     constructor(props) {
@@ -17,10 +19,10 @@ class QuestionList extends React.Component {
 
         let axisId = this.state.axisId;
 
-        let questionEndpoint = 'http://localhost:8055/items/question';
+        let questionEndpoint = apiEndpoint + '/items/question';
 
         if (axisId) {
-            let axisEndpoint = 'http://localhost:8055/items/axis/' + axisId;
+            let axisEndpoint = apiEndpoint + '/items/axis/' + axisId;
 
             fetch(
                 axisEndpoint, {

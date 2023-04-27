@@ -5,6 +5,7 @@ import Footer from "../components/Footer.js"
 import QuestionFormArea from "../components/QuestionFormArea.js"
 import AnswersArea from "../components/AnswersArea.js"
 
+import apiEndpoint from '../api';
 import "../styles/questions.css"
 
 class QuestionForm extends React.Component {
@@ -23,7 +24,7 @@ class QuestionForm extends React.Component {
   }
 
   componentDidMount() {
-    let questionEndpoint = 'http://localhost:8055/items/question';
+    let questionEndpoint = apiEndpoint + '/items/question';
 
     fetch(
       questionEndpoint, {
@@ -45,7 +46,7 @@ class QuestionForm extends React.Component {
       .then(() => {
         if (this.state.question) {
           let axisId = this.state.question.axis_id;
-          let axisEndpoint = 'http://localhost:8055/items/axis/' + axisId;
+          let axisEndpoint = apiEndpoint + '/items/axis/' + axisId;
 
           fetch(
             axisEndpoint, {
@@ -64,7 +65,7 @@ class QuestionForm extends React.Component {
       })
       .then(() => {
         if (this.state.question) {
-          let responseOptionsEndpoint = 'http://localhost:8055/items/response_option?filter={"question_id": {"_eq": ' + this.state.question.id + '}}';
+          let responseOptionsEndpoint = apiEndpoint + '/items/response_option?filter={"question_id": {"_eq": ' + this.state.question.id + '}}';
 
           fetch(
             responseOptionsEndpoint, {
@@ -97,7 +98,7 @@ class QuestionForm extends React.Component {
     let question = this.state.questions[questionIndex];
     let responseOptions;
 
-    let responseOptionsEndpoint = 'http://localhost:8055/items/response_option?filter={"question_id": {"_eq": ' + question.id + '}}';
+    let responseOptionsEndpoint = apiEndpoint + '/items/response_option?filter={"question_id": {"_eq": ' + question.id + '}}';
 
     fetch(
       responseOptionsEndpoint, {
@@ -113,7 +114,7 @@ class QuestionForm extends React.Component {
         responseOptions = json.data;
       })
       .then(() => {
-        let axisEndpoint = 'http://localhost:8055/items/axis/' + question.axis_id;
+        let axisEndpoint = apiEndpoint + '/items/axis/' + question.axis_id;
 
         fetch(
           axisEndpoint, {
