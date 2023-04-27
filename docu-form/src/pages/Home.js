@@ -14,7 +14,7 @@ function Home() {
         <h1 className="text-5xl text-cyan-50">Entrer le nom de votre entreprise</h1>
         <div>
           <form>
-            <input type="text" id="large-input" class="companyInput block  p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-6"/>
+            <input type="text" id="large-input" class="companyInput block  p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-6" />
           </form>
         </div>
         <Link to="/Questions">
