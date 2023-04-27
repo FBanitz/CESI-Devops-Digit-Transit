@@ -5,7 +5,7 @@ import Footer from "../components/Footer.js"
 import QuestionFormArea from "../components/QuestionFormArea.js"
 import AnswersArea from "../components/AnswersArea.js"
 
-import apiEndpoint from '../api';
+import { apiGet, apiOperators, apiSimpleFilter } from '../api.js';
 import "../styles/questions.css"
 
 class QuestionForm extends React.Component {
@@ -23,125 +23,109 @@ class QuestionForm extends React.Component {
     };
   }
 
-  componentDidMount() {
-    let questionEndpoint = apiEndpoint + '/items/question';
+  async getAxis(id) {
+    let axisRoute = '/items/axis/' + id;
 
-    fetch(
-      questionEndpoint, {
-      "method": 'GET',
-      "headers": {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-
-      },
-    },
+    const axisRes = await apiGet(
+      axisRoute,
     )
-      .then(res => res.json())
-      .then((json) => {
-        this.setState({
-          questions: json.data,
-          question: json.data[this.state.questionIndex],
-        })
-      })
-      .then(() => {
-        if (this.state.question) {
-          let axisId = this.state.question.axis_id;
-          let axisEndpoint = apiEndpoint + '/items/axis/' + axisId;
 
-          fetch(
-            axisEndpoint, {
-            "method": 'GET',
-            "headers": {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-            }
-          },
-          )
-            .then(res => res.json())
-            .then((json) => {
-              this.setState({ axis: json.data })
-            })
-        }
-      })
-      .then(() => {
-        if (this.state.question) {
-          let responseOptionsEndpoint = apiEndpoint + '/items/response_option?filter={"question_id": {"_eq": ' + this.state.question.id + '}}';
+    const axisJson = await axisRes.json()
 
-          fetch(
-            responseOptionsEndpoint, {
-            "method": 'GET',
-            "headers": {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-            }
-          },
-          )
-            .then(res => res.json())
-            .then((json) => {
-              this.setState({ responseOptions: json.data })
-            })
-        }
-      }
-      )
-
+    return axisJson.data;
   }
 
-  onQuestionAnswered(answerId) {
+  async getQuestions() {
+    let questionRoute = '/items/question/'
+
+    
+    const questionRes = await apiGet(
+      questionRoute,
+    )
+
+    const questionJson = await questionRes.json()
+
+    return questionJson.data;
+  }
+
+  async getResponseOptions(questionId) {
+    let responseOptionsRoute = '/items/response_option';
+
+    const responseOptionsRes = await apiGet(
+      responseOptionsRoute,
+      {
+        "filter": apiSimpleFilter("question_id", apiOperators.equals, questionId),
+      }
+    )
+
+    const responseOptionsJson = await responseOptionsRes.json()
+
+    return responseOptionsJson.data;
+  }
+  
+  incrementQuestionIndex() {
     let questionIndex = this.state.questionIndex + 1;
 
     if (questionIndex === this.state.questions.length) {
       this.setState({ isComplete: true })
+    }
+
+    this.setState({ questionIndex: questionIndex })
+
+    return questionIndex;
+  }
+
+  async onQuestionAnswered(answerId) {
+    this.incrementQuestionIndex()
+
+    if (this.state.isComplete) {
+      this.setState({ isComplete: true })
       return
     }
 
-    let axis;
-    let question = this.state.questions[questionIndex];
-    let responseOptions;
+    const question = this.state.questions[this.state.questionIndex]
 
-    let responseOptionsEndpoint = apiEndpoint + '/items/response_option?filter={"question_id": {"_eq": ' + question.id + '}}';
-
-    fetch(
-      responseOptionsEndpoint, {
-      "method": 'GET',
-      "headers": {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }
+    let axis
+    if (question.axis_id !== this.state.axis?.id) {
+      axis = await this.getAxis(question.axis_id)
+    } else {
+      axis = this.state.axis
     }
-    )
-      .then(res => res.json())
-      .then((json) => {
-        responseOptions = json.data;
-      })
-      .then(() => {
-        let axisEndpoint = apiEndpoint + '/items/axis/' + question.axis_id;
 
-        fetch(
-          axisEndpoint, {
-          "method": 'GET',
-          "headers": {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          }
-        }
-        )
-          .then(res => res.json())
-          .then((json) => {
-            axis = json.data;
-          })
+    let responseOptions = await this.getResponseOptions(question.id)
 
-
-          .then(() => {
-            this.setState({
-              question: question,
-              questionIndex: questionIndex,
-              responseOptions: responseOptions,
-              axis: axis,
-            })
-          })
-      })
+    this.setState({
+      axis: axis,
+      question: question,
+      responseOptions: responseOptions,
+    })
   }
 
+  async init() {
+    const questions = await this.getQuestions()
+    
+    if (questions.length === this.state.questionIndex) {
+      this.setState({ isComplete: true })
+      return
+    }
+
+    const question = questions[this.state.questionIndex]
+
+    let axis = await this.getAxis(question.axis_id)
+
+    let responseOptions = await this.getResponseOptions(question.id)
+
+    this.setState({
+      axis: axis,
+      question: question,
+      questions: questions,
+      responseOptions: responseOptions,
+    })
+  }
+
+  componentDidMount() {
+    this.init()
+  }
 
   render() {
     const question = this.state.question;

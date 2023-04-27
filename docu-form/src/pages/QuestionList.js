@@ -1,7 +1,7 @@
 import React from 'react';
 
 import "../styles/rapport.css"
-import apiEndpoint from '../api';
+import { apiEndpoint } from '../api';
 
 
 class QuestionList extends React.Component {
