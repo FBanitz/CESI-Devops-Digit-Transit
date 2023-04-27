@@ -1,16 +1,10 @@
-.takeTest {
-  width: 20em;
-  height: 10em;
+.companyInput {
   border: 2px solid;
   animation-name: change-border-color;
   animation-direction: alternate;
   animation-iteration-count: infinite;
   animation-duration: 5s;
   animation-timing-function: ease;
-}
-
-.takeTest:hover {
-  border-color: green !important;
 }
 
 @keyframes change-border-color {
@@ -20,3 +14,8 @@
   75% { border-color: #1d4ed8; }
   100% { border-color: #2563eb; }
 }
+
+.companyInput:focus {
+    outline: none !important;
+    border:2px solid green !important;
+  }

@@ -6,6 +6,7 @@ import "./styles/index.css"
 
 import Home from './pages/Home'
 import Questions from './pages/Questions'
+import Company from './pages/Company'
 
 import Competences from './components/Competences'
 import Reactivite from './components/Reactivite'
@@ -25,6 +26,7 @@ root.render(
         <Route path="/synthese" element={<Synthese />}></Route>
         <Route path="/" element={<Home />}></Route>
         <Route path="/questions" element={<Questions />}></Route>
+        <Route path="/company" element={<Company />}></Route>
       </Routes>
     </Router>
   </React.StrictMode>
