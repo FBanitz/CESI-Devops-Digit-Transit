@@ -5,7 +5,7 @@ on:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest   
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -17,7 +17,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build Docker Image
+        working-directory: docu-form
         run: docker build . -t gobetti/cesilab:${{ github.ref_name }}
 
       - name: Push Docker Image
+        working-directory: docu-form
         run: docker push gobetti/cesilab:${{ github.ref_name }}
