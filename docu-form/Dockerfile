@@ -12,6 +12,3 @@ EXPOSE 3000
 
 CMD [ "npm", "start" ] 
 #Fichier .dockerignore. Idem.
-
-node_modules
-npm-debug.log
