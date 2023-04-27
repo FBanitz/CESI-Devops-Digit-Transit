@@ -1,13 +1,19 @@
 .questionArea {
   width: 50%;
   height: 10em;
-  padding: 1em;
   border: 2px solid;
   animation-name: change-border-color;
   animation-direction: alternate;
   animation-iteration-count: infinite;
   animation-duration: 5s;
   animation-timing-function: ease;
+  display: flex;
+  justify-content: center;
+}
+
+.answerArea {
+  width: 10em;
+  height: 5em;
   display: flex;
   justify-content: center;
 }
@@ -24,6 +30,10 @@
   animation-timing-function: ease;
   display: flex;
   justify-content: center;
+}
+
+.answerArea:hover {
+  border-color: green !important;
 }
 
 h1 {
