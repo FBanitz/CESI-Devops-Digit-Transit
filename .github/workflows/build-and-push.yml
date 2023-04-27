@@ -24,7 +24,6 @@ jobs:
       - name: Modify version.js
         uses: jaywcjlove/github-action-modify-file-content@main
         with:
-          branch: main
           path: docu-form/src/version.js
           body: "const app_version = '${{ github.event.release.tag_name }}'; export default app_version;"
           overwrite: 'true'
