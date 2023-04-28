@@ -1,4 +1,4 @@
-const apiEndpoint = "http://localhost:8055";
+const apiEndpoint = "http://172.16.47.241:8055";
 
 const methods = {
     get: "GET",
@@ -138,4 +138,4 @@ async function pingserver() {
     return apiGet("/server/ping");
 }
 
-export { apiEndpoint, apiOperators, apiRequest,  apiGet, apiPost, apiPut, apiDelete, apiSimpleFilter, pingserver };
+export { apiEndpoint, apiOperators, apiRequest, apiGet, apiPost, apiPut, apiDelete, apiSimpleFilter, pingserver };
