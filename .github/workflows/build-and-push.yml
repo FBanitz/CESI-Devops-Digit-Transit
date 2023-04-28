@@ -26,7 +26,7 @@ jobs:
         with:
           branch: main
           path: docu-form/src/version.js
-          body: "const app_version = '${{ github.event.release.tag_name }}'; export default app_version;"
+          body: "const app_version = '${{ github.event.release.tag_name }}'\n export default app_version"
           overwrite: 'true'
 
       - name: Build Docker Image
