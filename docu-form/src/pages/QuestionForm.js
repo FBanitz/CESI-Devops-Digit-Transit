@@ -4,22 +4,35 @@ import Banner from "../components/Banner.js"
 import Footer from "../components/Footer.js"
 import QuestionFormArea from "../components/QuestionFormArea.js"
 import AnswersArea from "../components/AnswersArea.js"
-
-import { apiGet, apiOperators, apiSimpleFilter } from '../api.js';
+import { apiGet, apiOperators, apiPost, apiSimpleFilter } from '../api.js';
 import "../styles/questions.css"
 
 class QuestionForm extends React.Component {
 
-  constructor(props) {
+
+  
+  constructor (props)  {
     super(props);
+
+    const siteUrl = window.location.search;
+    const urlParams = new URLSearchParams(siteUrl);
+    const diagnosticId = urlParams.get('diagnosticId');
+
+    console.log(diagnosticId)
+
+    const questionIndex = urlParams.get('questionIndex');
+
+    console.log(questionIndex)
+
 
     this.state = {
       axis: null,
       questions: null,
       question: null,
-      questionIndex: 0,
+      questionIndex: questionIndex ?? 0,
       responseOptions: null,
       isComplete: false,
+      diagnosticId: diagnosticId,
     };
   }
 
@@ -62,6 +75,19 @@ class QuestionForm extends React.Component {
 
     return responseOptionsJson.data;
   }
+
+  createResponse(responseOptionId) {
+    let responseRoute = '/items/response';
+
+    apiPost(
+      responseRoute,
+      null,
+      {
+        "response_option_id": responseOptionId,
+        "diagnostic_id": this.state.diagnosticId,
+      },
+    )
+  }
   
   incrementQuestionIndex() {
     let questionIndex = this.state.questionIndex + 1;
@@ -83,6 +109,9 @@ class QuestionForm extends React.Component {
       return
     }
 
+    console.log(this.state.questionIndex)
+    console.log(this.state.questions)
+
     const question = this.state.questions[this.state.questionIndex]
 
     let axis
@@ -93,6 +122,8 @@ class QuestionForm extends React.Component {
     }
 
     let responseOptions = await this.getResponseOptions(question.id)
+
+    this.createResponse(answerId)
 
     this.setState({
       axis: axis,

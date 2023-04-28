@@ -69,6 +69,22 @@ function Home() {
     )
   }
 
+  async function getResponses(diagnosticId) {
+    const filter = apiSimpleFilter("diagnostic_id", apiOperators.equals, diagnosticId)
+
+    const responsesRes = await apiGet(
+      '/items/response',
+      {
+        "filter": filter,
+      }
+    )
+
+    const responsesJson = await responsesRes.json()
+
+    const responses = responsesJson.data
+    return responses
+  }
+
   async function onStartForm() {
     const companyInput = document.getElementById("companyNameInput").value;
 
@@ -77,7 +93,7 @@ function Home() {
     if (company) {
       console.log("Company exists")
 
-      const diagnostic = await getDiagnostic(company.id)
+      let diagnostic = await getDiagnostic(company.id)
 
       if (diagnostic) {
         console.log("Diagnostic exists")
@@ -85,14 +101,25 @@ function Home() {
           console.log("Diagnostic complete")
           return navigate("/synthese")
         }
+
         console.log("Diagnostic not complete")
-        return navigate("/questions")
+
+        console.log("Diagnostic id: " + diagnostic.id)
+
+        const responses = await getResponses(diagnostic.id)
+
+        return navigate("/questions?diagnosticId=" + diagnostic.id + "&questionIndex=" + responses.length)
       }
+
       console.log("Diagnostic does not exist")
       console.log("Creating diagnostic")
       await createDiagnostic(company.id)
+
+      diagnostic = await getDiagnostic(company.id)
       
-      return navigate("/questions")
+      return navigate(
+        "/questions?diagnosticId=" + diagnostic.id,
+      )
     }
 
     console.log("Company does not exist")
@@ -108,7 +135,11 @@ function Home() {
 
     await createDiagnostic(company.id)
 
-    return navigate("/questions")
+    const diagnostic = await getDiagnostic(company.id)
+
+    return navigate(
+      "/questions?diagnosticId=" + diagnostic.id,
+    )
   }
 
   return (

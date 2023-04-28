@@ -106,7 +106,7 @@ async function apiRequest(route, method, parametters = null, body = null) {
         request.body = JSON.stringify(body);
     }
 
-    // console.log(apiEndpoint + route + paramettersString);
+    console.log(apiEndpoint + route + paramettersString, request);
 
     return fetch(
         apiEndpoint + route + paramettersString,
